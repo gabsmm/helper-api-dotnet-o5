@@ -1,0 +1,6 @@
+@helper_api_dotnet_o5_HostAddress = http://localhost:5082
+
+GET {{helper_api_dotnet_o5_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
