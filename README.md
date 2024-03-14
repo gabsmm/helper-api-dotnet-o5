@@ -57,3 +57,6 @@ HELPER OPENED API
 
 # Grupo 13 (https://db.ygoprodeck.com/api-guide/)
 - Jefferson Azevedo Lins
+
+# Grupo 14 (https://rickandmortyapi.com/)
+- Allison Gomes
