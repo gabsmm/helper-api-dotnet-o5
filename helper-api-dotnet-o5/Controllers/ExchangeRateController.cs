@@ -25,14 +25,21 @@ namespace helper_api_dotnet_o5.Controllers
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         public IActionResult Get2(string moeda, int dias)
         {
-            var route = $"daily/{moeda}/{dias}";
-            var api = new HelperAPI(ENDPOINT);
-            var result = api.MetodoGET<List<ExchangeRateOutput>>(route).Result;
+            try
+            {
+                var route = $"daily/{moeda}/{dias}";
+                var api = new HelperAPI(ENDPOINT);
+                var result = api.MetodoGET<List<ExchangeRateOutput>>(route).Result;
 
-            if (result.Count > 0)
-                return Ok(result);
-            else
-                return NoContent();
+                if (result.Count > 0)
+                    return Ok(result);
+                else
+                    return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }
