@@ -20,10 +20,8 @@ namespace helper_api_dotnet_o5.Controllers
         [HttpGet]
         [Route("{moeda}/{dias}")]
         [ProducesResponseType(typeof(List<ExchangeRateOutput>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(StatusCodes.Status502BadGateway)]
-        public IActionResult Get2(string moeda, int dias)
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult Get(string moeda, int dias)
         {
             try
             {
@@ -31,15 +29,13 @@ namespace helper_api_dotnet_o5.Controllers
                 var api = new HelperAPI(ENDPOINT);
                 var result = api.MetodoGET<List<ExchangeRateOutput>>(route).Result;
 
-                if (result.Count > 0)
-                    return Ok(result);
-                else
-                    return NoContent();
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError);
+                return StatusCode(StatusCodes.Status404NotFound);
             }
+           
         }
     }
 }
