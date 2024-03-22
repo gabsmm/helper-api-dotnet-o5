@@ -1,4 +1,4 @@
-﻿namespace helper_api_dotnet_o5.Models.ExchangeRate
+namespace helper_api_dotnet_o5.Models.ExchangeRate
 
 {
     using System;
